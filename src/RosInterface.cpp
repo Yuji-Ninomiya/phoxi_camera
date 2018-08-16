@@ -484,6 +484,24 @@ void RosInterface::dynamicReconfigureCallback(phoxi_camera::phoxi_cameraConfig &
             ROS_WARN("%s",e.what());
         }
     }
+
+    if (level & (1 << 13)) {
+        try{
+            this->isOk();
+            scanner->CapturingSettings->AmbientLightSuppression = config.ambient_light_suppression;
+        }catch (PhoXiInterfaceException &e){
+            ROS_WARN("%s",e.what());
+        }
+    }
+
+    if (level & (1 << 14)) {
+        try{
+            this->isOk();
+            scanner->CapturingSettings->SinglePatternExposure = config.single_pattern_exposure;
+        }catch (PhoXiInterfaceException &e){
+            ROS_WARN("%s",e.what());
+        }
+    }
 }
 
 pho::api::PFrame RosInterface::getPFrame(int id){
@@ -580,11 +598,10 @@ void RosInterface::initFromPhoXi(){
     this->dynamicReconfigureConfig.send_depth_map = scanner->OutputSettings->SendDepthMap;
     this->dynamicReconfigureConfig.send_texture = scanner->OutputSettings->SendTexture;
     this->dynamicReconfigureConfig.coordinate_space = scanner->CoordinatesSettings->CoordinateSpace;
+    this->dynamicReconfigureConfig.ambient_light_suppression = scanner->CapturingSettings->AmbientLightSuppression;
+    if (scanner->CapturingSettings->SinglePatternExposure >= 10.24){
+        this->dynamicReconfigureConfig.single_pattern_exposure =  scanner->CapturingSettings->SinglePatternExposure;
+    } else {
+        this->dynamicReconfigureConfig.single_pattern_exposure = 20.48;
+    }
 }
-
-
-
-
-
-
-
