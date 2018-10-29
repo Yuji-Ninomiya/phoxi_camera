@@ -175,7 +175,7 @@ namespace phoxi_camera{
     }
     bool RosInterface::getFrame(phoxi_camera::GetFrame::Request &req, phoxi_camera::GetFrame::Response &res){
         try {
-            pho::api::PFrame frame = getPFrame(req.in);
+            pho::api::PFrame frame = getPFrame(req.id);
             publishFrame(frame);
             if(!frame){
                 res.success = false;
@@ -193,7 +193,7 @@ namespace phoxi_camera{
     }
     bool RosInterface::saveFrame(phoxi_camera::SaveFrame::Request &req, phoxi_camera::SaveFrame::Response &res){
         try {
-            pho::api::PFrame frame = RosInterface::getPFrame(req.in);
+            pho::api::PFrame frame = RosInterface::getPFrame(req.id);
             if(!frame){
                 res.success = false;
                 res.message = "Null frame!";
