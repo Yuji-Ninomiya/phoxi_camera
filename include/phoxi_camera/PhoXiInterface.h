@@ -25,6 +25,11 @@ class PhoXiInterface {
         */
         PhoXiInterface();
 
+        /*
+         * TODO explanation
+         */
+        bool saveLastFrame(const std::string &path);
+
         /**
         * Return all PhoXi 3D Scanners ids connected on netwok.
         *
@@ -215,8 +220,7 @@ class PhoXiInterface {
         pho::api::PPhoXi scanner;
         pho::api::PhoXiFactory phoXiFactory;
     private:
-
-
+        int last_frame_id = -1;
     };
 }
 
