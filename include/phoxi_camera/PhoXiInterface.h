@@ -25,11 +25,6 @@ class PhoXiInterface {
         */
         PhoXiInterface();
 
-        /*
-         * TODO explanation
-         */
-        bool saveLastFrame(const std::string &path);
-
         /**
         * Return all PhoXi 3D Scanners ids connected on netwok.
         *
@@ -210,6 +205,15 @@ class PhoXiInterface {
         * \throw InvalidTriggerMode when invalid trigger mode is passed
         */
         void setTriggerMode(pho::api::PhoXiTriggerMode mode, bool startAcquisition = false);
+
+        /**
+         * Save last frame to file
+         *
+         * \param path full path of file with extension
+         * \return bool whether saving proceed successful
+         */
+        bool saveLastFrame(const std::string &path);
+
         /**
         * Get trigger mode
         *
