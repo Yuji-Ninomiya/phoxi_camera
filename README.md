@@ -4,16 +4,13 @@ This package enables interfacing Photoneo PhoXi 3D Scanner/Camera from ROS.
 
 <img src="http://photoneo.com/images/photoneo_scanner.png" width="640">
 
-###Install
+### Install
 *phoxi_camera* package depends on several state-of-the-art libraries and latest version of g++ compiler. Script *install_prerequisities.sh* which is available in main repo folde install all packages and libraries required for successfull phoxi_camera compilation. Follow steps below to get phoxi_camera package working properly on your system: 
 
 ```
 cd catkin_ws/src
 git clone https://github.com/photoneo/phoxi_camera.git
-cd phoxi_camera
-chmod +x install_prerequisities.sh
-./install_prerequisities.sh
-cd ../..
+cd ..
 catkin_make
 ```
 ###Test PhoXi ROS interface without real 3D scanner
