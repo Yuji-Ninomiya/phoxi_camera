@@ -1,0 +1,13 @@
+<launch>
+
+<node pkg="phoxi_camera" type="phoxi_camera" name="phoxi_camera" output="screen"/>
+    <node pkg="phoxi_camera" type="phoxi_camera_example.py" name="phoxi_camera_example" output="screen"/>
+
+
+<!-- static_transform_publisher -->
+  <node pkg="tf" type="static_transform_publisher" name="world"
+	args="0 0 0 0 0 0 " />
+
+
+
+</launch>
