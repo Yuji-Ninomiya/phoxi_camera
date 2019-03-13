@@ -250,38 +250,38 @@ void publish_frame(pho::api::PFrame MyFrame){
         pcl::PointCloud <pcl::PointXYZ> cloud;
         sensor_msgs::Image texture, confidence_map, normal_map;
         ros::Time       timeNow         = ros::Time::now();
-        std::string     frame           = "camera";
-
-        texture.header.stamp          = timeNow;
-        texture.header.frame_id       = frame;
-
-        confidence_map.header.stamp         = timeNow;
-        confidence_map.header.frame_id      = frame;
-
-        normal_map.header.stamp          = timeNow;
-        normal_map.header.frame_id       = frame;
-
-        texture.encoding = "32FC1";
-        sensor_msgs::fillImage( texture,
-                                sensor_msgs::image_encodings::TYPE_32FC1,
-                                MyFrame->Texture.Size.Height, // height
-                                MyFrame->Texture.Size.Width, // width
-                                MyFrame->Texture.Size.Width * sizeof(float), // stepSize
-                                MyFrame->Texture.operator[](0));
-        confidence_map.encoding = "32FC1";
-        sensor_msgs::fillImage( confidence_map,
-                                sensor_msgs::image_encodings::TYPE_32FC1,
-                                MyFrame->ConfidenceMap.Size.Height, // height
-                                MyFrame->ConfidenceMap.Size.Width, // width
-                                MyFrame->ConfidenceMap.Size.Width * sizeof(float), // stepSize
-                                MyFrame->ConfidenceMap.operator[](0));
-        normal_map.encoding = "32FC3";
-        sensor_msgs::fillImage( normal_map,
-                                sensor_msgs::image_encodings::TYPE_32FC3,
-                                MyFrame->NormalMap.Size.Height, // height
-                                MyFrame->NormalMap.Size.Width, // width
-                                MyFrame->NormalMap.Size.Width * sizeof(float) * 3, // stepSize
-                                MyFrame->NormalMap.operator[](0));
+//        std::string     frame           = "camera";
+//
+//        texture.header.stamp          = timeNow;
+//        texture.header.frame_id       = frame;
+//
+//        confidence_map.header.stamp         = timeNow;
+//        confidence_map.header.frame_id      = frame;
+//
+//        normal_map.header.stamp          = timeNow;
+//        normal_map.header.frame_id       = frame;
+//
+//        texture.encoding = "32FC1";
+//        sensor_msgs::fillImage( texture,
+//                                sensor_msgs::image_encodings::TYPE_32FC1,
+//                                MyFrame->Texture.Size.Height, // height
+//                                MyFrame->Texture.Size.Width, // width
+//                                MyFrame->Texture.Size.Width * sizeof(float), // stepSize
+//                                MyFrame->Texture.operator[](0));
+//        confidence_map.encoding = "32FC1";
+//        sensor_msgs::fillImage( confidence_map,
+//                                sensor_msgs::image_encodings::TYPE_32FC1,
+//                                MyFrame->ConfidenceMap.Size.Height, // height
+//                                MyFrame->ConfidenceMap.Size.Width, // width
+//                                MyFrame->ConfidenceMap.Size.Width * sizeof(float), // stepSize
+//                                MyFrame->ConfidenceMap.operator[](0));
+//        normal_map.encoding = "32FC3";
+//        sensor_msgs::fillImage( normal_map,
+//                                sensor_msgs::image_encodings::TYPE_32FC3,
+//                                MyFrame->NormalMap.Size.Height, // height
+//                                MyFrame->NormalMap.Size.Width, // width
+//                                MyFrame->NormalMap.Size.Width * sizeof(float) * 3, // stepSize
+//                                MyFrame->NormalMap.operator[](0));
         int h = MyFrame->PointCloud.Size.Height;
         int w = MyFrame->PointCloud.Size.Width;
         for (int i = 0; i < h; ++i) {
@@ -297,9 +297,9 @@ void publish_frame(pho::api::PFrame MyFrame){
         output_cloud.header.frame_id = "map";
         output_cloud.header.stamp = timeNow;
         pub_cloud.publish(output_cloud);
-        pub_normal_map.publish(normal_map);
-        pub_confidence_map.publish(confidence_map);
-        pub_texture.publish(texture);
+        // pub_normal_map.publish(normal_map);
+        // pub_confidence_map.publish(confidence_map);
+        // pub_texture.publish(texture);
     }
 }
 
