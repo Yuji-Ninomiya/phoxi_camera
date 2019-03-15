@@ -65,7 +65,7 @@ add_compile_options(-pthread)
 add_executable(
   ${PROJECT_NAME}
   src/phoxi_camera_node.cpp
-)
+  )
 
 add_dependencies(
   ${PROJECT_NAME}
