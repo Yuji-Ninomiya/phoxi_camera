@@ -5,6 +5,7 @@ from std_srvs.srv import *
 
 if __name__ == "__main__":
     rospy.init_node('phoxi_camera_example', anonymous=True)
+    sensor_id = rospy.get_param('~sensor_id', "2018-08-029-LC3")
     while not rospy.is_shutdown():
         rospy.wait_for_service('phoxi_camera/get_device_list')
         try:
@@ -12,7 +13,7 @@ if __name__ == "__main__":
             resp1 = get_device_list()
             print "devices", resp1.out
             # name = "InstalledExamples-PhoXi-example(File3DCamera)"
-            name = "2018-08-029-LC3"
+            name = sensor_id
             res_connect = rospy.ServiceProxy('phoxi_camera/connect_camera', ConnectCamera)(name)
             print "connect to", name, res_connect
             if res_connect.success:
