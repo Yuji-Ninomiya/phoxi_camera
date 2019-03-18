@@ -1,0 +1,14 @@
+<launch>
+
+  <arg name="sensor_name" default="photoneo_center" />
+  <!-- <arg name="sensor_id" default="2019-02-012-LC3" /> -->
+  <arg name="sensor_id" default="PhoXiTemp(0)(File3DCamera)" />
+
+  <node pkg="phoxi_camera" type="phoxi_camera" name="phoxi_camera" output="screen">
+    <param name="sensor_name" type="str" value="$(arg sensor_name)" />
+  </node>
+  <node pkg="phoxi_camera" type="phoxi_camera_setup.py" name="phoxi_camera_example" output="screen">
+    <param name="sensor_id" type="str" value="$(arg sensor_id)" />
+  </node>
+
+</launch>
